@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def initialize_reddit():
-    """Initialize Reddit API client using credentials."""
+    """Initialize Reddit API"""
     client_id = os.getenv('REDDIT_CLIENT_ID')
     client_secret = os.getenv('REDDIT_CLIENT_SECRET')
     
@@ -21,8 +21,7 @@ def initialize_reddit():
 
 def fetch_user_data(username):
     """
-    Fetch posts and comments for a given Reddit username.
-    Returns a dictionary with user data in JSON-compatible format.
+    Fetch posts and comments
     """
     reddit = initialize_reddit()
     user_data = {

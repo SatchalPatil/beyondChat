@@ -6,7 +6,7 @@ import google.generativeai as genai
 load_dotenv()
 
 def configure_gemini():
-    """Configure the Gemini API client."""
+    """Configure GEMINI API"""
     api_key = os.getenv('GEMINI_API_KEY')
     if not api_key:
         raise ValueError("Missing GEMINI_API_KEY in environment variables.")
@@ -16,10 +16,7 @@ def configure_gemini():
 def build_persona(input_json_file, output_persona_file):
     """
     Build a user persona from Reddit data using the Gemini API and save it to a text file.
-    
-    Args:
-        input_json_file (str): Path to the JSON file containing Reddit data
-        output_persona_file (str): Path to save the persona text file
+
     """
     try:
         # Read JSON data
