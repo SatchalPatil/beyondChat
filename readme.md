@@ -6,8 +6,8 @@ Generate a persona profile from a Reddit user's posts and comments using the Gem
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/beyondCchat.git
-   cd reddit-persona-generator
+   git clone https://github.com/yourusername/reddit-persona.git
+   cd reddit-persona
 
 
 2. **Install dependencies**
