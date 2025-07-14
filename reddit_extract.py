@@ -35,7 +35,7 @@ def fetch_user_data(username):
         redditor = reddit.redditor(username)
         
         # Fetch posts
-        for submission in redditor.submissions.new(limit=100):
+        for submission in redditor.submissions.new():
             post_data = {
                 'id': submission.id,
                 'title': submission.title,
@@ -46,7 +46,7 @@ def fetch_user_data(username):
             user_data['posts'].append(post_data)
         
         # Fetch comments
-        for comment in redditor.comments.new(limit=100):
+        for comment in redditor.comments.new():
             comment_data = {
                 'id': comment.id,
                 'body': comment.body,
