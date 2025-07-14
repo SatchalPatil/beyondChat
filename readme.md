@@ -1,187 +1,130 @@
-﻿Reddit Persona Generator
+# Reddit Persona Generator
 
-Overview
+A Python-based tool that scrapes a Reddit user's posts and comments, analyzes them using the Gemini API, and generates a structured Markdown persona profile.
 
-This Python script scrapes a Reddit user's posts and comments, analyzes them using the Gemini API, and generates a user persona in a structured Markdown format. The persona includes:
+---
 
-Location: Inferred city, state, or country.
+## 🔍 Features
 
-Age: Estimated age range with reasoning.
+- Scrapes up to 100 Reddit posts and 100 comments
+- Filters sensitive content to avoid Gemini API moderation blocks
+- Generates detailed user persona with:
+  - **Location**
+  - **Age**
+  - **Occupation**
+  - **Interests**
+  - **Personality Traits**
+  - **Behaviors**
+  - **Frustrations**
+- Includes citations to original Reddit posts/comments
+- Exports:
+  - Raw data in `.json`
+  - Persona in `.txt` (Markdown format)
 
-Occupation: Inferred job or professional status.
+---
 
-Interests: Hobbies or interests derived from content.
+## 🧠 Example Persona Output
 
-Personality Traits: Traits like curious or outspoken.
+# User Persona: Dense_Educator8783
 
-Behaviors: Observable actions, e.g., frequent posting.
+## Characteristics
 
-Frustrations: Complaints or issues expressed.
+- **Location**: New York, inferred from r/nyc activity.  
+  - Citation: Post ID: abc123, https://www.reddit.com/r/nyc/comments/abc123/
 
-Each characteristic includes citations to specific posts or comments (ID and URL). The script filters sensitive content to avoid Gemini API moderation errors (e.g., PROHIBITED\_CONTENT).
+- **Age**: Likely 20–30, based on college references.  
+  - Citation: Comment ID: xyz789, https://www.reddit.com/r/nyc/comments/[post_id]/xyz789/
 
-Requirements
+- **Occupation**: Student, inferred from coursework mentions.  
+  - Citation: Post ID: def456, https://www.reddit.com/r/college/comments/def456/
 
+- **Interests**: Gaming, social events.  
+  - Citation: Comment ID: ghi012, https://www.reddit.com/r/gaming/comments/[post_id]/ghi012/
+
+- **Personality Traits**: Curious, outspoken.  
+  - Citation: Comment ID: mno678, https://www.reddit.com/r/nyc/comments/[post_id]/mno678/
+
+- **Behaviors**: Active Reddit user, frequent commenter.  
+  - Citation: Comment ID: mno678, https://www.reddit.com/r/nyc/comments/[post_id]/mno678/
+
+- **Frustrations**: Issues with local transportation.  
+  - Citation: Post ID: pqr901, https://www.reddit.com/r/nyc/comments/pqr901/
+⚙️ Requirements
 Python: 3.8 or higher
 
-Dependencies:
-
-praw: Reddit API access
-
-python-dotenv: Environment variable management
-
-google-generativeai: Gemini API access
-
-
-API Keys:
-
-Reddit API: REDDIT\_CLIENT\_ID, REDDIT\_CLIENT\_SECRET
-
-Gemini API: GEMINI\_API\_KEY
-
-
-
-Setup
-
-Install Dependencies:
-
+Python Dependencies
+bash
+Copy
+Edit
 pip install praw python-dotenv google-generativeai
+API Keys Required
+Reddit API
 
+REDDIT_CLIENT_ID
 
-Configure Environment Variables:
+REDDIT_CLIENT_SECRET
 
-Create a .env file in the project directory:
+Gemini API
 
-REDDIT\_CLIENT\_ID=your\_reddit\_client\_id
+GEMINI_API_KEY
 
-REDDIT\_CLIENT\_SECRET=your\_reddit\_client\_secret
+🛠️ Setup
+Clone the repository
 
-GEMINI\_API\_KEY=your\_gemini\_api\_key
+bash
+Copy
+Edit
+git clone https://github.com/yourusername/reddit-persona-generator.git
+cd reddit-persona-generator
+Install dependencies
 
+bash
+Copy
+Edit
+pip install -r requirements.txt
+Add environment variables
 
-Get Reddit API credentials from Reddit Apps.
+Create a .env file in the project root:
 
-Get a Gemini API key from Google Cloud.
-
-
-Project Files:
-
-Ensure these files are in your project directory:
-
-main.py: Runs the script and prompts for input.
-
-reddit\_extract.py: Fetches Reddit data.
-
-extract\_persona.py: Generates the persona.
-
-
-
-Usage
-
+env
+Copy
+Edit
+REDDIT_CLIENT_ID=your_reddit_client_id
+REDDIT_CLIENT_SECRET=your_reddit_client_secret
+GEMINI_API_KEY=your_gemini_api_key
+📁 Project Structure
+bash
+Copy
+Edit
+reddit-persona-generator/
+│
+├── main.py                # Main entry point
+├── reddit_extract.py      # Scraper for Reddit data
+├── extract_persona.py     # Gemini-based persona generator
+├── .env                   # Your API keys (not tracked in git)
+├── requirements.txt       # Dependency list
+🚀 Usage
 Run the script:
 
+bash
+Copy
+Edit
 python main.py
+Enter a Reddit profile URL when prompted:
 
-
-Enter a Reddit user profile URL, e.g.:
-
-https://www.reddit.com/user/Dense\_Educator8783/
-
-
+ruby
+Copy
+Edit
+https://www.reddit.com/user/Dense_Educator8783/
 The script will:
 
-Fetch up to 100 posts and 100 comments.
+Fetch Reddit data
 
-Save raw data to username\_reddit\_data.json.
+Filter sensitive terms
 
-Filter sensitive content (e.g., terms like "harassing", "violence").
+Generate persona via Gemini
 
-Generate the persona using the Gemini API.
+Output:
 
-Save the persona to username\_persona.txt.
+username_reddit_data.json
 
-
-
-Output
-
-The script generates two files:
-
-username\_reddit\_data.json: Raw Reddit data in JSON format.
-
-username\_persona.txt: Persona in Markdown format, e.g.:
-
-\# User Persona: Dense\_Educator8783
-
-\## Characteristics
-
-- \*\*Location\*\*: New York, inferred from r/nyc activity.
-- Citation: Post ID: abc123, https://www.reddit.com/r/nyc/comments/abc123/
-- \*\*Age\*\*: Likely 20-30, based on college references.
-- Citation: Comment ID: xyz789, https://www.reddit.com/r/nyc/comments/[post\_id]/xyz789/
-- \*\*Occupation\*\*: Student, inferred from coursework mentions.
-- Citation: Post ID: def456, https://www.reddit.com/r/college/comments/def456/
-- \*\*Interests\*\*: Gaming, social events.
-- Citation: Comment ID: ghi012, https://www.reddit.com/r/gaming/comments/[post\_id]/ghi012/
-- \*\*Personality Traits\*\*: Curious, outspoken.
-- Citation: Comment ID: mno678, https://www.reddit.com/r/nyc/comments/[post\_id]/mno678/
-- \*\*Behaviors\*\*: Active Reddit user, frequent commenter.
-- Citation: Comment ID: mno678, https://www.reddit.com/r/nyc/comments/[post\_id]/mno678/
-- \*\*Frustrations\*\*: Issues with local transportation.
-- Citation: Post ID: pqr901, https://www.reddit.com/r/nyc/comments/pqr901/
-
-
-
-If the Gemini API blocks content, a fallback persona is saved:
-
-\# User Persona: Dense\_Educator8783
-
-\## Characteristics
-
-- \*\*Location\*\*: Insufficient data to determine location.
-- Citation: None, more data needed.
-- \*\*Age\*\*: Insufficient data to estimate age.
-- Citation: None, more data needed.
-
-...
-
-Note: Persona generation failed due to content moderation.
-
-Troubleshooting
-
-No Data Fetched:
-
-Verify the Reddit user exists and has public posts/comments.
-
-Check Reddit API credentials in .env.
-
-
-PROHIBITED\_CONTENT Error:
-
-Review console output for filtered posts/comments.
-
-Check username\_reddit\_data.json for sensitive terms.
-
-Update sensitive\_keywords in extract\_persona.py:
-
-sensitive\_keywords = ['harassing', 'bribe', 'violence', 'hate', 'explicit', 'abuse', 'assault', 'discrimination', 'offensive', 'threat', 'illegal', 'sex', 'drugs', 'new\_term']
-
-
-
-
-API Errors:
-
-Ensure valid Gemini API key and sufficient quota.
-
-Check for network issues or rate limits.
-
-
-
-Notes
-
-Fetches up to 100 posts and 100 comments to respect API limits.
-
-Content filtering may reduce data if many posts/comments are sensitive.
-
-Gemini API supports up to 1 million tokens per request, sufficient for most users.
-
-For support, check console output or contact the developer.
