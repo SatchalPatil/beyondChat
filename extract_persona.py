@@ -50,7 +50,11 @@ def build_persona(input_json_file, output_persona_file):
         
         #prompt for LLM
         prompt = """
-        You are an expert in user persona creation. Analyze the provided Reddit user data (posts and comments) and create a detailed user persona. The persona must follow this exact structure, with the specified categories. For each characteristic, provide a description and cite the specific post or comment by its ID and URL. If insufficient data is available for a category, provide a brief explanation and note that more data is needed.
+        You are an expert in user persona creation. 
+        Analyze the provided Reddit user data (posts and comments)
+        and create a detailed user persona. The persona must follow this exact structure, with the specified categories. 
+        For each characteristic, provide a description and cite the specific post or comment by its ID and URL. 
+        If insufficient data is available for a category, provide a brief explanation and note that more data is needed.
 
         Format the persona as follows:
         User Persona: [Username]
@@ -61,31 +65,31 @@ def build_persona(input_json_file, output_persona_file):
             - Citation: [Post/Comment ID], [URL]
             - [Additional citations as needed]
 
-        - **Age:** [Estimated age range with reasoning, noting if more data is needed]
+        - Age: [Estimated age range with reasoning, noting if more data is needed]
             - Citation: [Post/Comment ID], [URL]
             - [Additional citations as needed]
 
-        - **Occupation:** [Inferred occupation or professional status with reasoning]
+        - Occupation: [Inferred occupation or professional status with reasoning]
             - Citation: [Post/Comment ID], [URL]
             - [Additional citations as needed]
 
-        - **Interests:** [List of interests inferred from posts/comments]
+        - Interests:[List of interests inferred from posts/comments]
             - Citation: [Post/Comment ID], [URL]
             - [Additional citations as needed]
 
-        - **Personality Traits:** [Description of personality traits, e.g., observant, cynical]
+        - Personality Traits: [Description of personality traits, e.g., observant, cynical]
             - Citation: [Post/Comment ID], [URL]
             - [Additional citations as needed]
 
-        - **Behaviors:** [Observable behaviors, e.g., seeking information online]
+        - Behaviors: [Observable behaviors, e.g., seeking information online]
             - Citation: [Post/Comment ID], [URL]
             - [Additional citations as needed]
 
-        - **Frustrations:** [Issues or complaints expressed by the user]
+        - Frustrations: [Issues or complaints expressed by the user]
             - Citation: [Post/Comment ID], [URL]
             - [Additional citations as needed]
 
-        - **Motivation:** [What keeps the user motivated]
+        - Motivation: [What keeps the user motivated]
             - Citation: [Post/Comment ID], [URL]
             - [Additional citations as needed]
 
